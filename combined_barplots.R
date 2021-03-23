@@ -1,0 +1,66 @@
+##Multiple barplots
+ord        = order(deficit$Amount, decreasing=F)
+subset     = c(1,2,11,19,20,28)
+#quartz(height=7.5, width=13.5)
+layout(mat=matrix(c(1,1,1,1,7,2,3,4,5,6), nrow=2, ncol=5, byrow=T), widths=c(2.5,2.5,2.5,2.5,2.5), height=c(6,1.5))
+#layout.show(7)
+##
+par(mar=c(0,16,3,0)+0.3)
+barplot(deficit$Amount[ord[-subset]], horiz=T, col=colorscale[as.numeric(deficit$Color[ord[-subset]])], border=colorscale[as.numeric(deficit$Color[ord[-subset]])], axes=F)
+mtext(side=2, text=row.names(deficit)[ord[-subset]], at=seq(from=0.7, by=1.2, length=29), las=2, line=2, cex=0.70, col=c(rep(colorscale[5],24),"black",rep(colorscale[5],4)), font=c(rep(1,24),2,rep(1,4)))
+mtext(side=2, text=deficit$Amount[ord[-subset]], at=seq(from=0.7, by=1.2, length=29), las=2, line=0, cex=0.70, col=c(rep(colorscale[5],24),"black",rep(colorscale[5],4)), font=c(rep(1,24),2,rep(1,4)))
+mtext(side=3, text=seq(0,400,by=50), at=seq(0,400,by=50), cex.axis=0.8, line=-0.7, cex=0.70)
+legend(201, 24, c("Spending","Hoarding","Earning","Fighting","Giving","Bailing","Lending"), fill=colorscale[-1], border=colorscale[-1], bty="n",cex=1.20)
+segments(x0=seq(50,400,by=50), y0=0, x1=seq(50,400,by=50), y1=34.6, col="grey", lty=2)
+title(main="The UK Budget Deficit Compared to Other Big Amounts of Money", cex=0.70)
+##
+subset     = c(31,32,33,34)
+deficitred = deficit[subset,]
+ord        = order(deficitred$Amount, decreasing=F)
+par(mar=c(0,13,0,-0.3)+0.3)
+barplot(deficitred$Amount[ord], horiz=T, col=colorscale[as.numeric(deficitred$Color[ord])], border=colorscale[as.numeric(deficitred$Color[ord])], axes=F, xlim =c(0,300))
+mtext(side=2, text=row.names(deficitred)[ord], at=seq(from=0.7, by=1.2, length=4), las=2, line=2.1, cex=0.70, col=c(rep(colorscale[5],2),"black",rep(colorscale[5],1)), font=c(rep(1,2),2,rep(1,1)))
+mtext(side=2, text=deficitred$Amount[ord], at=seq(from=0.7, by=1.2, length=4), las=2, line=0.25, cex=0.70, col=c(rep(colorscale[5],2),"black",rep(colorscale[5],1)), font=c(rep(1,2),2,rep(1,1)))
+mtext(side=3, text=seq(100,300,by=100), at=seq(100,300,by=100), cex.axis=0.8, line=-0.3, cex=0.70)
+segments(x0=seq(100,300,by=100), y0=0, x1=seq(100,300,by=100), y1=4.8, col="grey", lty=2)
+##
+subset     = c(34,18,19)
+deficitred = deficit[subset,]
+ord        = order(deficitred$Amount, decreasing=F)
+par(mar=c(-0.3,10,0,-0.3)+0.3)
+barplot(deficitred$Amount[ord], horiz=T, col=colorscale[as.numeric(deficitred$Color[ord])], border=colorscale[as.numeric(deficitred$Color[ord])], axes=F, xlim=c(0,300))
+mtext(side=2, text=row.names(deficitred)[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=2.1, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=2, text=deficitred$Amount[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=0.25, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=3, text=seq(0,300,by=100), at=seq(0,300,by=100), cex.axis=0.8, line=-0.3, cex=0.70)
+segments(x0=seq(100,300,by=100), y0=0, x1=seq(100,300,by=100), y1=3.6, col="grey", lty=2)
+##
+subset     = c(28,29,34)
+deficitred = deficit[subset,]
+ord        = order(deficitred$Amount, decreasing=F)
+par(mar=c(-0.3,10,0,-0.3)+0.3)
+barplot(deficitred$Amount[ord], horiz=T, col=colorscale[as.numeric(deficitred$Color[ord])], border=colorscale[as.numeric(deficitred$Color[ord])], axes=F, xlim=c(0,300))
+mtext(side=2, text=row.names(deficitred)[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=2.1, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=2, text=deficitred$Amount[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=0.25, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=3, text=seq(0,300,by=100), at=seq(0,300,by=100), cex.axis=0.8, line=-0.3, cex=0.70)
+segments(x0=seq(100,300,by=100), y0=0, x1=seq(100,300,by=100), y1=3.6, col="grey", lty=2)
+##
+subset     = c(12,13,34)
+deficitred = deficit[subset,]
+ord        = order(deficitred$Amount, decreasing=F)
+par(mar=c(-0.3,10,0,-0.3)+0.3)
+barplot(deficitred$Amount[ord], horiz=T, col=colorscale[as.numeric(deficitred$Color[ord])], border=colorscale[as.numeric(deficitred$Color[ord])], axes=F, xlim=c(0,300))
+mtext(side=2, text=row.names(deficitred)[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=2.1, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=2, text=deficitred$Amount[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=0.25, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=3, text=seq(0,300,by=100), at=seq(0,300,by=100), cex.axis=0.8, line=-0.3, cex=0.70)
+segments(x0=seq(100,300,by=100), y0=0, x1=seq(100,300,by=100), y1=3.6, col="grey", lty=2)
+##
+subset     = c(8,34,35)
+deficitred = deficit[subset,]
+ord        = order(deficitred$Amount, decreasing=F)
+par(mar=c(-0.3,11,0,0.7)+0.3)
+barplot(deficitred$Amount[ord], horiz=T, col=colorscale[as.numeric(deficitred$Color[ord])], border=colorscale[as.numeric(deficitred$Color[ord])], axes=F, xlim=c(0,300))
+mtext(side=2, text=row.names(deficitred)[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=2.1, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=2, text=deficitred$Amount[ord], at=seq(from=0.7, by=1.2, length=3), las=2, line=0.25, cex=0.70, col=c(rep(colorscale[5],2),"black"), font=c(rep(1,2),2))
+mtext(side=3, text=seq(0,300,by=100), at=seq(0,300,by=100), cex.axis=0.8, line=-0.3, cex=0.70)
+segments(x0=seq(100,300,by=100), y0=0, x1=seq(100,300,by=100), y1=3.6, col="grey", lty=2)
+dev.print(dev=pdf, file="UKdeficit2.pdf")
